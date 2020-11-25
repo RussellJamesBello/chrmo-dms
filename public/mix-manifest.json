@@ -1,0 +1,22 @@
+{
+    "/js/app.js": "/js/app.js?id=1762f00479d4a2092160",
+    "/js/authenticated.js": "/js/authenticated.js?id=91ff2ae042c3ce81d492",
+    "/js/login/options.js": "/js/login/options.js?id=0c72452a165affc9c3ba",
+    "/css/add_document/styles.css": "/css/add_document/styles.css?id=d41d8cd98f00b204e980",
+    "/js/add_document/logic.js": "/js/add_document/logic.js?id=9c0323202617e4dfb231",
+    "/js/add_document/options.js": "/js/add_document/options.js?id=cb13a7fa4913650f8c01",
+    "/js/add_document/reactive_data.js": "/js/add_document/reactive_data.js?id=f63fa777d06d18ff4820",
+    "/js/employee_list/options.js": "/js/employee_list/options.js?id=3e1e11231dbca0f99bd4",
+    "/js/employee_info/options.js": "/js/employee_info/options.js?id=863988f350bd8653653f",
+    "/js/edit_employee/options.js": "/js/edit_employee/options.js?id=53cfbf176005de0e1ab4",
+    "/js/edit_document/options.js": "/js/edit_document/options.js?id=66143834e138b5091aaa",
+    "/js/edit_document/logic.js": "/js/edit_document/logic.js?id=f3160df8b112031cc209",
+    "/js/show_document/options.js": "/js/show_document/options.js?id=14aa01d9fa138cdd3015",
+    "/js/user_dashboard/options.js": "/js/user_dashboard/options.js?id=0f1438e86dbff84eb441",
+    "/js/office_dashboard/options.js": "/js/office_dashboard/options.js?id=201abb30e9eb6b5f71a1",
+    "/js/office_dashboard/logic.js": "/js/office_dashboard/logic.js?id=b9c796ef63437f711df8",
+    "/js/edit_user/options.js": "/js/edit_user/options.js?id=651c4f059bb6fb9c2732",
+    "/js/edit_office/options.js": "/js/edit_office/options.js?id=53cfbf176005de0e1ab4",
+    "/js/edit_division/options.js": "/js/edit_division/options.js?id=53cfbf176005de0e1ab4",
+    "/css/globals.css": "/css/globals.css?id=8b8465a7ec1519da8eb8"
+}

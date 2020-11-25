@@ -1,0 +1,97 @@
+.block_center
+{
+	margin-left: auto !important;
+	margin-right: auto !important;
+	display: block !important;
+}
+
+.text_center
+{
+	text-align: center;
+}
+
+body
+{
+	background-color: #b5e5ff !important;
+}
+
+#login_content
+{
+	 top: 50% !important;
+	 transform: translateY(-50%) !important;
+}
+
+#main_container
+{
+	margin-top: 42px;
+	margin-bottom: 52px;
+}
+
+#main_content
+{
+	background-color: #ecf8ff !important;
+}
+
+#main_header
+{
+	background-color: #f9f9f9;
+	letter-spacing: 1.5pt;
+}
+
+#menu_brand
+{
+	display: inline;
+	vertical-align: middle;
+	line-height: 38.5px;
+	cursor: grab;
+}
+
+#search_form
+{
+	padding-top: 22px;
+}
+
+#specific_content
+{
+	background-color: #fdfdfd;
+}
+
+#footer
+{
+	background-color: #3cacff !important;
+}
+
+#footer .item
+{
+	justify-content: center;
+}
+
+.secondary_header:before
+{
+	width: 5% !important;
+}
+
+.secondary_header:after
+{
+	width: 95% !important;
+}
+
+.no_display
+{
+	display: none !important;
+}
+
+@media only screen and (max-width: 768px) 
+{
+    #main_container
+    {
+        margin-top: 288px;
+        margin-bottom: 120px;
+    }
+
+    #search_form
+    {
+    	padding-top: 16px;
+    	padding-bottom: 16px;
+    }
+}

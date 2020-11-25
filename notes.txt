@@ -1,0 +1,13 @@
+chrmo-dms configuration notes
+-give a password to its phpmyadmin root user
+-to initialize database, create chrmo_dms_database database, migrate the migration files, and seed the database
+-remember to cache files in the back-end
+-change timezone to Asia/Manila
+-deploy it as a virtual host and specify its hostname at /etc/hosts, including client computers
+-use ImageMagick extension
+-use these values for the following php.ini variables
+max_execution_time = 60
+max_file_uploads = 100
+memory_limit = 800M
+post_max_size = 400M
+upload_max_filesize = 3M
