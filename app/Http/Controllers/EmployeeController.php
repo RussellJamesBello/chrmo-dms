@@ -59,10 +59,18 @@ class EmployeeController extends Controller
 
     public function getEmployeeInfo(Employee $employee)
     {
+        if($this->request->search_document != null)
+            $documents = Document::where('employee_id', '=', $employee->employee_id)
+                            ->search($this->request->search_document, ['name' => 2, 'keywords' => 1])
+                            ->get();
+
+        else
+            $documents = Document::where('employee_id', $employee->employee_id)->paginate(50);
+
         return view('employee.info', [
-            'title' => "Employee's Info",
+            'title' => "Employee Info",
             'employee' => $employee,
-            'documents' => Document::where('employee_id', $employee->employee_id)->paginate(50),
+            'documents' => $documents,
             'office' => $employee->getOffice()
         ]);
     }

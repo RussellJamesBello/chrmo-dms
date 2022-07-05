@@ -18,7 +18,7 @@
 		$current_url = request()->path();
 	@endphp
 	
-	<div id="main_menu" class="ui small blue inverted labeled icon top fixed stackable menu">
+	<div id="main_menu" class="ui small blue inverted top fixed stackable menu">
 		<div class="ui container">
 			<h4 id="menu_brand" class="header item">
 				<img src="/images/lc_logo.png">
@@ -75,7 +75,7 @@
 	</div>
 
 	<div id="main_container" class="ui grid container">
-		<div id="main_content" class="sixteen wide column ui raised piled segment">
+		<div id="main_content" class="sixteen wide column ui raised segment">
 			<h3 id="main_header" class="ui top attached header blue center aligned">
 				<u>{{ $title }}</u>
 			</h3>

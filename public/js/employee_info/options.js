@@ -1,4 +1,4 @@
-var components = ['header-data-view', 'info-divider', 'simple-dropdown', 'delete-modal'];
+var components = ['header-data-view', 'input-field', 'info-divider', 'simple-dropdown', 'delete-modal'];
 
 var options = {
 	data: {

@@ -71,7 +71,7 @@ class DocumentController extends Controller
                 'document_name' => "bail|required|alpha_num_spaces|max:$cust_folder_dir_and_doc_name_max",
                 'tags' => 'bail|required|max:100',
                 'uploads' => 'required|max:800',
-                'uploads.*' => 'bail|max:1500|mimes:jpeg,png',
+                'uploads.*' => 'bail|max:1500|mimes:jpeg,jpg,png',
             ], [
                 'uploads.max' => 'You may only upload 800 pages at a time.',
                 'uploads.*.max' => 'This image may not be greater than 1.5 Megabytes.',
@@ -171,7 +171,7 @@ class DocumentController extends Controller
             ];
 
         return view('document.show', [
-            'title' => "Document's Info",
+            'title' => "Document Info",
             'document' => $document,
             'pages' => collect($pages),
             'page_url' => substr_replace(route('page', ['document' => $document->document_id, 0]), '', -1),
@@ -204,7 +204,7 @@ class DocumentController extends Controller
                 'document_name' => "bail|required|alpha_num_spaces|max:$cust_folder_dir_and_doc_name_max",
                 'tags' => 'bail|required|max:100',
                 'uploads' => 'required|max:800',
-                'uploads.*' => 'bail|max:1500|mimes:jpeg,png',
+                'uploads.*' => 'bail|max:1500|mimes:jpeg,jpg,png',
             ], [
                 'uploads.max' => 'You may only upload 800 pages at a time.',
                 'uploads.*.max' => 'This image may not be greater than 1.5 Megabytes.',
@@ -326,7 +326,7 @@ class DocumentController extends Controller
 
             $path = getEmployeeFolder($employee, $document->custom_folder_path, $document->name, $document_content->file_name, true, true);
 
-            return response()->file($path);
+            return response()->file($path, ['Cache-Control' => 'no-cache, no-store']);
         }
 
         return response()->json([], 404);

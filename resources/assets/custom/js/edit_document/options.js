@@ -177,7 +177,8 @@ let options = {
 	},
 
 	mounted(){
-		this.folder_directory = this.$refs.folder_directory.dataOld;
+		/*commented it out to reduce user experience complexity. To use custom folder directory for uploads to the server, uncomment this
+		this.folder_directory = this.$refs.folder_directory.dataOld;*/
 		this.document_name = this.$refs.document_name.dataOld;
 		this.tags = this.$refs.tags.dataOld;
 		

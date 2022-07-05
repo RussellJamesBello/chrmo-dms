@@ -24,7 +24,7 @@ body
 #main_container
 {
 	margin-top: 42px;
-	margin-bottom: 52px;
+	padding-bottom: 52px;
 }
 
 #main_content
@@ -44,11 +44,6 @@ body
 	vertical-align: middle;
 	line-height: 38.5px;
 	cursor: grab;
-}
-
-#search_form
-{
-	padding-top: 22px;
 }
 
 #specific_content

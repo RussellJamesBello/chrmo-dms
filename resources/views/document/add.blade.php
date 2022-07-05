@@ -137,6 +137,7 @@
 
 	<info-divider>Document</info-divider>
 
+	<!--///////commented it out to reduce user experience complexity. To use custom folder directory for uploads to the server, uncomment this
 	<left-labeled-input-field
 		:data-content="folder_directory_error"
 		data-position="top center"
@@ -149,6 +150,7 @@
 		v-model="folder_directory"
 		ref="folder_directory">
 	</left-labeled-input-field>
+	-->
 
 	<div class="fields">
 		<input-field

@@ -37,7 +37,44 @@
 
 <div class="ui stackable centered grid">
 	<div class="fifteen wide column">
-		<div class="ui very relaxed divided list">
+		<div class="ui vertically divided very compact grid">
+			<div class="row">
+				<div class="five wide column">
+					<h5 class="ui header" style="position: absolute; top: 50%; transform: translateY(-50%);">
+						@if(request()->input('search_document'))
+							Search results for: {{ request()->input('search_document') }}
+						@else
+							{{ $documents->count() }} Total Documents
+						@endif
+					</h5>
+				</div>
+
+				<div class="five wide column"></div>
+
+				<div class="six wide column">
+					@if(request()->input('search_document'))
+						<a class="ui small basic fluid blue button" href="{{ url()->current() }}">Remove Search Document Results</a>
+					@else
+						<form class="ui form" method="GET" action="{{ url()->current() }}">
+							<input-field
+								type="text"
+								label="Search Document"
+								name="search_document"
+								placeholder="Type a document name or keyword and press Enter">
+							</input-field>
+						</form>
+					@endif
+				</div>
+			</div>
+
+			<div class="row">
+				
+			</div>
+		</div>
+	</div>
+
+	<div class="fifteen wide column">
+		<div class="ui very relaxed divided selection list">
 			@foreach($documents as $document)
 				<div class="item">
 					<div class="right floated content">
@@ -62,21 +99,33 @@
 
 					<i class="middle aligned file icon"></i>
 
-					<div class="content">
+					<div class="content" onclick="location.href='{{ url("documents/{$document->document_id}") }}'">
 						<a class="header" href="{{ url("documents/{$document->document_id}") }}">
 							{{ $document->name }}
 						</a>
 
 						<div class="description">
 							stored at: {{ getEmployeeFolder($employee, $document->custom_folder_path, $document->name, null, false) }}
+							<br>
+							@php
+								$tags = explode(',', $document->keywords)
+							@endphp
+
+							@foreach($tags as $tag)
+								<a class="ui small primary basic label">{{ $tag }}</a>
+							@endforeach
 						</div>
 					</div>
 				</div>
 			@endforeach
 		</div>
-
-		{{ $documents->links() }}
 	</div>
+
+	@if(!request()->input('search_document'))
+		<div class="center aligned five wide column">
+			{{ $documents->links() }}
+		</div>
+	@endif
 </div>
 
 <delete-modal

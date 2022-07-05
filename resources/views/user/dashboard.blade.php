@@ -4,7 +4,7 @@
 
 @php
 
-	if($errors->isNotEmpty() || session('success')['header'] != null)
+	if($errors->isNotEmpty() || isset(session('success')['header']))
 	{
 		$first_tab = '';
 		$second_tab = 'active';
@@ -48,7 +48,7 @@
 								<a href="{{ url("users/$user->user_id/edit") }}" class="item">
 									Edit
 								</a>
-								<a href="#" onclick="event.preventDefault(); document.getElementById('remove_form_{{ $loop->index }}').submit();" class="item">
+								<a href="#" @click="changeCurrentRemove('{{ url("users/$user->user_id") }}', '{{ $user->name }}')" class="item">
 									Remove
 								</a>
 
@@ -118,6 +118,16 @@
 		</form>
 	</div>
 </div>
+
+<delete-modal
+	:form-action="current_form_action"
+	id="remove_modal"
+	modal-title="Remove Office/Division"
+	:delete-name="current_delete_name"
+	@close="reinitializeValues()">
+	@csrf
+	@method('DELETE')
+</delete-modal>
 
 @endsection
 

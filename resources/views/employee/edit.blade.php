@@ -3,6 +3,7 @@
 @section('sub_content')
 
 <div style="overflow: auto;">
+	<a href="{{ url('employees') }}" class="ui grey right floated mini button">Back</a>
 	<a href="{{ url('employees/' . $employee->employee_id) }}" class="ui green right floated mini button">Info</a>
 </div>
 

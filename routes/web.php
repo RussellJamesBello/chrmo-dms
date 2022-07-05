@@ -39,6 +39,7 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::match(['get', 'put'], 'offices/{office}/edit', 'OfficeController@editOffice');
 		Route::match(['get', 'put'], 'divisions/{division}/edit', 'OfficeController@editDivision');
 		Route::delete('offices/{office}', 'OfficeController@removeOffice');
+		Route::match(['get', 'put'], 'offices/{office}/employee-transfer', 'OfficeController@transferEmployeesBeforeRemove')->middleware('transfer-employees');
 		Route::delete('divisions/{division}', 'OfficeController@removeDivision');
 
 		Route::delete('documents/{document}', 'DocumentController@removeDocument');

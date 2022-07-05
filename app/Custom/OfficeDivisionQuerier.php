@@ -6,9 +6,13 @@ use App\Division;
 
 class OfficeDivisionQuerier
 {
-	public function getAllOfficeAndDivision($linkable_to_employee = true, $as_json = true)
+	public function getAllOfficeAndDivision($linkable_to_employees_only = true, $as_json = true)
 	{
-		$offices = Office::select(['name', 'name_acronym'])->where('linkable_to_employee', '=', $linkable_to_employee)->get();
+        if($linkable_to_employees_only)
+            $offices = Office::select(['name', 'name_acronym'])->where('linkable_to_employee', '=', true)->get();
+        else
+            $offices = Office::select(['name', 'name_acronym'])->get();
+
         $divisions = Division::select(['name', 'name_acronym'])->get();
         $offices_and_divisions = $offices->concat($divisions);
 

@@ -2,7 +2,7 @@
 	<field>
 		<div class="ui checkbox" :class="kind">
 			<label>{{ label }}</label>
-			<input type="checkbox" :name="name" :checked="checked" @change="$emit('change', $event.target.checked)" class="hidden">
+			<input type="checkbox" :name="name" :checked="checked" @change="$emit('change', $event.target.checked)" class="hidden" v-bind="dynamicAttributes">
 		</div>
 	</field>
 </template>

@@ -54,6 +54,9 @@ mix.js('resources/assets/js/app.js', 'public/js')
 	//edit division page
 	.babel(['resources/assets/custom/js/edit_division/options.js'], 'public/js/edit_division/options.js')
 
+	//transfer employees page
+	.babel(['resources/assets/custom/js/transfer_employees/options.js'], 'public/js/transfer_employees/options.js')
+
 	//style for all pages
 	.styles(['resources/assets/custom/css/globals.css'], 'public/css/globals.css')
 	.version();

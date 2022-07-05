@@ -3,7 +3,7 @@
 @section('sub_content')
 
 <div style="overflow: auto;">
-	<a href="{{ url('users') }}" class="ui green right floated mini button">Back</a>
+	<a href="{{ url('users') }}" class="ui grey right floated mini button">Back</a>
 </div>
 
 <div class="ui stackable centered grid">

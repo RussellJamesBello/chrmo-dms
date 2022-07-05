@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
         	'name' => 'Administrator',
             'username' => 'admin',
-            'password' => bcrypt('sudo login master')
+            'password' => bcrypt('simulation')
         ]);
     }
 }

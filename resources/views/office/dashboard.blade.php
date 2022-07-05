@@ -3,7 +3,7 @@
 @section('sub_content')
 
 @php
-	if($errors->isNotEmpty() || session('success')['header'] != null)
+	if($errors->isNotEmpty() || isset(session('success')['header']))
 	{
 		$first_tab = '';
 		$third_tab = 'active';
@@ -49,9 +49,24 @@
 								<a href="{{ url("offices/$office->office_id/edit") }}" class="item">
 									Edit
 								</a>
+
+								@php
+									$has_division_employees = App\Employee::whereIn('division_id', $office->divisions->pluck('division_id')->toArray())->get()->isNotEmpty();
+								@endphp
+
+								@if($office->employees->isEmpty() && !$has_division_employees)
 								<a @click="changeCurrentRemove('{{ url("offices/$office->office_id") }}', '{{ str_replace('\'', '\\\'', $office->name) }}')" href="#" class="item">
 									Remove
 								</a>
+								@elseif($has_division_employees)
+								<a href="#" class="item" data-tooltip="{{ $office->name_acronym }} cannot be deleted because it still has existing divisions." data-position="left center">
+									Remove
+								</a>
+								@else
+								<a href="{{ url("offices/{$office->name_acronym}/employee-transfer") }}" class="item">
+									Remove
+								</a>
+								@endif
 							</template>
 						</simple-dropdown>
 					</td>
@@ -89,9 +104,16 @@
 								<a href="{{ url("divisions/$division->division_id/edit") }}" class="item">
 									Edit
 								</a>
+
+								@if($division->employees->isEmpty())
 								<a @click="changeCurrentRemove('{{ url("divisions/$division->division_id") }}', '{{ str_replace('\'', '\\\'', $division->name) }}')" href="#" class="item">
 									Remove
 								</a>
+								@else
+								<a href="{{ url("offices/{$division->name_acronym}/employee-transfer") }}" class="item">
+									Remove
+								</a>
+								@endif
 							</template>
 						</simple-dropdown>
 					</td>
@@ -150,7 +172,7 @@
 
 				<div v-show="isOffice == true">
 					<br>
-					<i id="division_link_tip" data-position="top center" data-content="If selected option is Yes, the office will only be used for linking Divisions and not be included as an option in the Office Field when adding a document or editing an employee. Otherwise, the office can be used as an option in the said functions and can also be linked to Divisions." class="question circle outline icon"></i>
+					<i id="division_link_tip" data-position="top center" data-content="If selected option is Yes, the office will only be used for linking divisions and not be included as an option in the office field when adding a document or editing an employee. Otherwise, the office can be used as an option in the said functions and can also be linked to divisions." class="question circle outline icon"></i>
 				</div>
 
 				<select-field
@@ -187,14 +209,11 @@
 <delete-modal
 	:form-action="current_form_action"
 	id="remove_modal"
-	modal-title="Remove Office/Division"
+	modal-title="Office/Division"
 	:delete-name="current_delete_name"
 	@close="reinitializeValues()">
 	@csrf
 	@method('DELETE')
-	<template slot="additional_message">
-		By doing so, employees' records under it would also be removed. If it is an office with divisions, its respective divisions would be removed, too. Remove at your own risk.
-	</template>
 </delete-modal>
 
 @endsection

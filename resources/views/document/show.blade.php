@@ -21,7 +21,7 @@
 	@method('DELETE')
 </delete-modal>
 
-<a href="{{ url()->previous() }}" class="ui grey right floated mini button">Back</a>
+<a href="{{ url("employees/{$document->employee->employee_id}") }}" class="ui grey right floated mini button">Back</a>
 <a href="{{ url("documents/$document->document_id/edit") }}" class="ui yellow right floated mini button">Edit</a>
 @role('administrator')
 	<a @click="changeCurrentRemove('{{ url("documents/$document->document_id") }}', '{{ $document->name }}')" href="#" class="ui red right floated mini button">
@@ -44,7 +44,13 @@
 	<header-data-view class="six wide">
 		Tags:
 		<template slot="value">
-			{{ $document->keywords }}
+			@php
+				$tags = explode(',', $document->keywords)
+			@endphp
+
+			@foreach($tags as $tag)
+				<a class="ui small primary basic label">{{ $tag }}</a>
+			@endforeach
 		</template>
 	</header-data-view>
 

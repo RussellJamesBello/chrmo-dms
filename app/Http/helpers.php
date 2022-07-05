@@ -1,4 +1,9 @@
 <?php
+	function getScannedFolderName()
+	{
+		return 'scan/';
+	}
+
 	function getEmployeeFolder($employee, $custom_directory = null, $document_name = null, $file_name = null, $use_root_folder = true, $use_absolute_path = false)
 	{
 		if($employee->office_id != null)
@@ -6,13 +11,13 @@
 		else
 			$office = $employee->division->name_acronym;
 
-		$root_folder = $use_root_folder ? 'scan/' : '';
+		$root_folder = $use_root_folder ? getScannedFolderName() : '';
 
 		if($use_absolute_path && $use_root_folder)
 			$absolute_path = storage_path('app/');
 
 		elseif($use_absolute_path && !$use_root_folder)
-			$absolute_path = storage_path('app/scan/');
+			$absolute_path = storage_path('app/') . getScannedFolderName();
 
 		else
 			$absolute_path = '';

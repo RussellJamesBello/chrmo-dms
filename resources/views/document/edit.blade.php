@@ -3,6 +3,7 @@
 @section('sub_content')
 
 <div style="overflow: auto;">
+	<a href="{{ url("employees/{$document->employee->employee_id}") }}" class="ui grey right floated mini button">Back</a>
 	<a href="{{ url('documents/' . $document->document_id) }}" class="ui green right floated mini button">Info</a>
 </div>
 
@@ -19,6 +20,7 @@
 		</div>
 	</div>
 	
+	<!--///////commented it out to reduce user experience complexity. To use custom folder directory for uploads to the server, uncomment this
 	<left-labeled-input-field
 		:data-content="folder_directory_error"
 		data-position="top center"
@@ -32,6 +34,7 @@
 		data-old="{{ $document->custom_folder_path }}"
 		ref="folder_directory">
 	</left-labeled-input-field>
+	-->
 
 	<div class="fields">
 		<input-field
